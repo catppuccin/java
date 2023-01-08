@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.catppuccin</groupId>
-  <artifactId>java</artifactId>
+  <artifactId>catppuccin-palette</artifactId>
   <version>1.0.0</version>
   <packaging>${packaging}</packaging>
 
@@ -16,7 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <name>java</name>
+  <name>catppuccin-palette</name>
   <description>Soothing pastel theme for Catppuccin</description>
   <url>https://github.com/catppuccin/java</url>
 

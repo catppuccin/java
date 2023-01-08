@@ -9,24 +9,24 @@
 	<a href="https://github.com/catppuccin/java/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/java?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
 	<a href="https://github.com/catppuccin/java/issues"><img src="https://img.shields.io/github/issues/catppuccin/java?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
 	<a href="https://github.com/catppuccin/java/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/java?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
-  <a href="https://mvnrepository.com/artifact/com.catppuccin/java"><img src="https://img.shields.io/maven-central/v/com.catppuccin/java?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+  <a href="https://mvnrepository.com/artifact/com.catppuccin/catppuccin-palette"><img src="https://img.shields.io/maven-central/v/com.catppuccin/catppuccin-palette?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 ## Installation
 
 Latest
-Version: <a href="https://mvnrepository.com/artifact/com.catppuccin/java"><img src="https://img.shields.io/maven-central/v/com.catppuccin/java?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+Version: <a href="https://mvnrepository.com/artifact/com.catppuccin/catppuccin-palette"><img src="https://img.shields.io/maven-central/v/com.catppuccin/catppuccin-palette?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 
 Be sure to replace the **VERSION** key below with the version shown above!
 
 ### Maven
 
 ```xml
-<!-- https://mvnrepository.com/artifact/com.catppuccin/java -->
+<!-- https://mvnrepository.com/artifact/com.catppuccin/catppuccin-palette -->
 
 <dependency>
   <groupId>com.catppuccin</groupId>
-  <artifactId>java</artifactId>
+  <artifactId>catppuccin-palette</artifactId>
   <version>VERSION</version>
 </dependency>
 ```
@@ -39,8 +39,8 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/com.catppuccin/java
-    implementation group: 'com.catppuccin', name: 'java', version: 'VERSION'
+    // https://mvnrepository.com/artifact/com.catppuccin/catppuccin-palette
+    implementation group: 'com.catppuccin', name: 'catppuccin-palette', version: 'VERSION'
 }
 ```
 
