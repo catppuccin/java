@@ -1,0 +1,57 @@
+name: Build
+
+on:
+  push:
+    branches: '**'
+    paths:
+      - 'src/**'
+      - 'pom.xml'
+  pull_request:
+    branches: '**'
+    paths:
+      - 'src/**'
+      - 'pom.xml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '8'
+          cache: 'maven'
+
+      - name: Build
+        run: mvn -B -DskipTests clean package
+
+      - name: Test
+        run: mvn test
+
+      - name: Retrieve Name & Version
+        run: |
+          echo "VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+          echo "NAME=$(mvn help:evaluate -Dexpression=project.name -q -DforceStdout)" >> $GITHUB_ENV
+
+      - name: Archive Jar
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.NAME }}-${{ env.VERSION }}.jar
+          path: ./target/${{ env.NAME }}-${{ env.VERSION }}.jar
+
+      - name: Archive Javadoc
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.NAME }}-${{ env.VERSION }}-javadoc.jar
+          path: ./target/${{ env.NAME }}-${{ env.VERSION }}-javadoc.jar
+
+      - name: Archive Sources
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.NAME }}-${{ env.VERSION }}-sources.jar
+          path: ./target/${{ env.NAME }}-${{ env.VERSION }}-sources.jar
