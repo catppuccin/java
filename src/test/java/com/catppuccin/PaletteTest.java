@@ -42,6 +42,6 @@ class PaletteTest {
 
     private JsonNode getPalette() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readTree(new URL("https://raw.githubusercontent.com/catppuccin/palette/main/palette.json"));
+        return mapper.readTree(new URL("https://raw.githubusercontent.com/catppuccin/palette/ec883a880bc24d43a01c78e7d9602abf6b1780dd/palette.json"));
     }
 }
