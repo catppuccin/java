@@ -1,6 +1,6 @@
 package com.catppuccin;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,6 +10,9 @@ import java.util.Objects;
  * This can either be latte, frappé, macchiato or mocha.
  */
 public class Flavour {
+    private final List<Pair<String, Color>> colors;
+    private final int hash;
+
     private final String name;
     private final Color rosewater;
     private final Color flamingo;
@@ -94,6 +97,65 @@ public class Flavour {
         this.base = base;
         this.mantle = mantle;
         this.crust = crust;
+
+        this.colors = Arrays.asList(
+            new Pair<>("rosewater", rosewater),
+            new Pair<>("flamingo", flamingo),
+            new Pair<>("pink", pink),
+            new Pair<>("mauve", mauve),
+            new Pair<>("red", red),
+            new Pair<>("maroon", maroon),
+            new Pair<>("peach", peach),
+            new Pair<>("yellow", yellow),
+            new Pair<>("green", green),
+            new Pair<>("teal", teal),
+            new Pair<>("sky", sky),
+            new Pair<>("sapphire", sapphire),
+            new Pair<>("blue", blue),
+            new Pair<>("lavender", lavender),
+            new Pair<>("text", text),
+            new Pair<>("subtext1", subtext1),
+            new Pair<>("subtext0", subtext0),
+            new Pair<>("overlay2", overlay2),
+            new Pair<>("overlay1", overlay1),
+            new Pair<>("overlay0", overlay0),
+            new Pair<>("surface2", surface2),
+            new Pair<>("surface1", surface1),
+            new Pair<>("surface0", surface0),
+            new Pair<>("base", base),
+            new Pair<>("mantle", mantle),
+            new Pair<>("crust", crust)
+        );
+
+        this.hash = Objects.hash(
+            name,
+            rosewater,
+            flamingo,
+            pink,
+            mauve,
+            red,
+            maroon,
+            peach,
+            yellow,
+            green,
+            teal,
+            sky,
+            sapphire,
+            blue,
+            lavender,
+            text,
+            subtext1,
+            subtext0,
+            overlay2,
+            overlay1,
+            overlay0,
+            surface2,
+            surface1,
+            surface0,
+            base,
+            mantle,
+            crust
+        );
     }
 
     /**
@@ -292,40 +354,14 @@ public class Flavour {
      * @return {@link List}{@code <}{@link Pair}{@code <}{@link String}, {@link Color}{@code >>}
      */
     public List<Pair<String, Color>> toList() {
-        List<Pair<String, Color>> colours = new ArrayList<>();
-        colours.add(new Pair<>("rosewater", rosewater));
-        colours.add(new Pair<>("flamingo", flamingo));
-        colours.add(new Pair<>("pink", pink));
-        colours.add(new Pair<>("mauve", mauve));
-        colours.add(new Pair<>("red", red));
-        colours.add(new Pair<>("maroon", maroon));
-        colours.add(new Pair<>("peach", peach));
-        colours.add(new Pair<>("yellow", yellow));
-        colours.add(new Pair<>("green", green));
-        colours.add(new Pair<>("teal", teal));
-        colours.add(new Pair<>("sky", sky));
-        colours.add(new Pair<>("sapphire", sapphire));
-        colours.add(new Pair<>("blue", blue));
-        colours.add(new Pair<>("lavender", lavender));
-        colours.add(new Pair<>("text", text));
-        colours.add(new Pair<>("subtext1", subtext1));
-        colours.add(new Pair<>("subtext0", subtext0));
-        colours.add(new Pair<>("overlay2", overlay2));
-        colours.add(new Pair<>("overlay1", overlay1));
-        colours.add(new Pair<>("overlay0", overlay0));
-        colours.add(new Pair<>("surface2", surface2));
-        colours.add(new Pair<>("surface1", surface1));
-        colours.add(new Pair<>("surface0", surface0));
-        colours.add(new Pair<>("base", base));
-        colours.add(new Pair<>("mantle", mantle));
-        colours.add(new Pair<>("crust", crust));
-        return colours;
+        return colors;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
+
         Flavour that = (Flavour) obj;
         return Objects.equals(this.name, that.name) &&
             Objects.equals(this.rosewater, that.rosewater) &&
@@ -358,7 +394,7 @@ public class Flavour {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, rosewater, flamingo, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, blue, lavender, text, subtext1, subtext0, overlay2, overlay1, overlay0, surface2, surface1, surface0, base, mantle, crust);
+        return hash;
     }
 
     @Override
@@ -390,7 +426,8 @@ public class Flavour {
             "surface0=" + surface0 + ", " +
             "base=" + base + ", " +
             "mantle=" + mantle + ", " +
-            "crust=" + crust + ']';
+            "crust=" + crust +
+            ']';
     }
 
 }

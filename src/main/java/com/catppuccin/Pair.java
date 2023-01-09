@@ -2,6 +2,12 @@ package com.catppuccin;
 
 import java.util.Objects;
 
+/**
+ * A pair of two values.
+ *
+ * @param <T> the first type.
+ * @param <U> the second type.
+ */
 public final class Pair<T, U> {
     private final T key;
     private final U value;
@@ -23,7 +29,7 @@ public final class Pair<T, U> {
     public boolean equals(Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        Pair that = (Pair) obj;
+        Pair<?, ?> that = (Pair<?, ?>) obj;
         return Objects.equals(this.key, that.key) &&
             Objects.equals(this.value, that.value);
     }
@@ -37,7 +43,7 @@ public final class Pair<T, U> {
     public String toString() {
         return "Pair[" +
             "key=" + key + ", " +
-            "value=" + value + ']';
+            "value=" + value +
+            ']';
     }
-
 }

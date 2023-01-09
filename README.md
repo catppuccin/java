@@ -30,7 +30,9 @@ Be sure to replace the **VERSION** key below with the version shown above!
 
 ### Gradle
 
-```gradle
+<details open>
+<summary>Groovy DSL (<code>build.gradle</code>)</summary>
+<pre lang="groovy">
 repositories {
     mavenCentral()
 }
@@ -38,8 +40,27 @@ repositories {
 dependencies {
     // https://mvnrepository.com/artifact/com.catppuccin/catppuccin-palette
     implementation group: 'com.catppuccin', name: 'catppuccin-palette', version: 'VERSION'
+    // or
+    // implementation 'com.catppuccin:catppuccin-palette:VERSION'
 }
-```
+</pre>
+</details>
+
+<details>
+<summary>Kotlin DSL (<code>build.gradle.kts</code>)</summary>
+<pre lang="kotlin">
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.catppuccin/catppuccin-palette
+    implementation("com.catppuccin:catppuccin-palette:VERSION")
+    // or
+    // implementation("com.catppuccin", "catppuccin-palette", "VERSION")
+}
+</pre>
+</details>
 
 ### Binaries
 
@@ -111,6 +132,7 @@ are stored at [.github/workflows](.github/workflows)
 ## 💝 Thanks to
 
 - [Hamothy](https://github.com/sgoudham)
+- [Killian](https://github.com/xtrm-en)
 
 &nbsp;
 
