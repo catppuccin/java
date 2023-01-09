@@ -1,6 +1,6 @@
 package com.catppuccin;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -136,8 +136,17 @@ public class Palette {
         new Color(17, 17, 27)
     );
 
-    private Palette() {
+    /**
+     * A pre-computed list of all the flavours.
+     */
+    private static final List<Flavour> FLAVOURS = Arrays.asList(
+        LATTE,
+        FRAPPE,
+        MACCHIATO,
+        MOCHA
+    );
 
+    private Palette() {
     }
 
     /**
@@ -147,11 +156,6 @@ public class Palette {
      * @return {@link List}{@code <}{@link Flavour}{@code >}
      */
     public static List<Flavour> toList() {
-        List<Flavour> flavours = new ArrayList<>();
-        flavours.add(LATTE);
-        flavours.add(FRAPPE);
-        flavours.add(MACCHIATO);
-        flavours.add(MOCHA);
-        return flavours;
+        return FLAVOURS;
     }
 }
