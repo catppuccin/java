@@ -326,6 +326,7 @@ public class Flavour {
     public boolean equals(Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
+
         Flavour that = (Flavour) obj;
         return Objects.equals(this.name, that.name) &&
             Objects.equals(this.rosewater, that.rosewater) &&
@@ -358,7 +359,35 @@ public class Flavour {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, rosewater, flamingo, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, blue, lavender, text, subtext1, subtext0, overlay2, overlay1, overlay0, surface2, surface1, surface0, base, mantle, crust);
+        return Objects.hash(
+            name,
+            rosewater,
+            flamingo,
+            pink,
+            mauve,
+            red,
+            maroon,
+            peach,
+            yellow,
+            green,
+            teal,
+            sky,
+            sapphire,
+            blue,
+            lavender,
+            text,
+            subtext1,
+            subtext0,
+            overlay2,
+            overlay1,
+            overlay0,
+            surface2,
+            surface1,
+            surface0,
+            base,
+            mantle,
+            crust
+        );
     }
 
     @Override
@@ -390,7 +419,8 @@ public class Flavour {
             "surface0=" + surface0 + ", " +
             "base=" + base + ", " +
             "mantle=" + mantle + ", " +
-            "crust=" + crust + ']';
+            "crust=" + crust +
+            ']';
     }
 
 }

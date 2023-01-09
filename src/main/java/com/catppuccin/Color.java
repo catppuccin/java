@@ -5,7 +5,6 @@ package com.catppuccin;
  * additional utility methods to provide different representations of the existing data.
  */
 public class Color extends java.awt.Color {
-
     /**
      * @see java.awt.Color#Color(int, int, int)
      */
@@ -20,12 +19,18 @@ public class Color extends java.awt.Color {
      * @return {@link String} containing the hex value of the chosen colour, e.g "1e1e2e"
      */
     public String getHex() {
-        return String.format("%02x%02x%02x", this.getRed(), this.getGreen(), this.getBlue());
+        return String.format(
+            "%02x%02x%02x",
+            this.getRed(),
+            this.getGreen(),
+            this.getBlue()
+        );
     }
 
     /**
      * @return an array of three elements containing the red, green and blue components in
      * the range of 0-255 as specified by the default sRGB space.
+     *
      * @see java.awt.Color#getRed()
      * @see java.awt.Color#getGreen()
      * @see java.awt.Color#getBlue()
