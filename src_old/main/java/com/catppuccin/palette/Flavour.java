@@ -1,4 +1,4 @@
-package com.catppuccin;
+package com.catppuccin.palette;
 
 import java.util.ArrayList;
 import java.util.List;

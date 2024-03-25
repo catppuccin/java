@@ -1,4 +1,4 @@
-package com.catppuccin;
+package com.catppuccin.palette;
 
 /**
  * This {@link Color} class extends the existing {@link java.awt.Color} class to add
