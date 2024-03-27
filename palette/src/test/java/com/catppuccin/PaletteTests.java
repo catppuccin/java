@@ -65,4 +65,19 @@ public class PaletteTests {
         assertEquals("oled base is 0, 0, 0", new Color(0, 0, 0), oled.base());
         assertNotEquals("oled base and mocha base to not be the same", mocha.base(), oled.base());
     }
+
+    @Test
+    public void darkLightSet() {
+        assertEquals("mocha to be dark", true, Palette.MOCHA.isDark());
+        assertEquals("mocha to be not light", false, Palette.MOCHA.isLight());
+
+        assertEquals("macchiato to be dark", true, Palette.MACCHIATO.isDark());
+        assertEquals("macchiato to be not light", false, Palette.MACCHIATO.isLight());
+
+        assertEquals("frappe to be dark", true, Palette.FRAPPE.isDark());
+        assertEquals("frappe to be not light", false, Palette.FRAPPE.isLight());
+
+        assertEquals("latte to be light", true, Palette.LATTE.isLight());
+        assertEquals("latte to be not dark", false, Palette.LATTE.isDark());
+    }
 }

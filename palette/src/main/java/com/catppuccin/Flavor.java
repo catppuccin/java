@@ -2,6 +2,8 @@ package com.catppuccin;
 
 public interface Flavor {
     String name();
+    boolean isDark();
+    boolean isLight();
 
     Color rosewater();
     Color flamingo();

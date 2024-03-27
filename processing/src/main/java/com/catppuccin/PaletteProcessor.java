@@ -38,21 +38,23 @@ public class PaletteProcessor extends AbstractProcessor {
     private static final ClassName COLOR_CLASS = ClassName.get(ROOT_PKG, "Color");
 
     private static enum Flavor {
-        MOCHA("mocha", "Mocha", "MOCHA", "new Mocha()"),
-        MACCHIATO("macchiato", "Macchiato", "MACCHIATO", "new Macchiato()"),
-        FRAPPE("frappe", "Frappe", "FRAPPE", "new Frappe()"),
-        LATTE("latte", "Latte", "LATTE", "new Latte()");
+        MOCHA("mocha", "Mocha", "MOCHA", "new Mocha()", true),
+        MACCHIATO("macchiato", "Macchiato", "MACCHIATO", "new Macchiato()", true),
+        FRAPPE("frappe", "Frappe", "FRAPPE", "new Frappe()", true),
+        LATTE("latte", "Latte", "LATTE", "new Latte()", false);
 
         String displayName;
         String generatedClassName;
         String fieldName;
         String initialiser;
+        boolean isDark;
 
-        Flavor(String displayName, String generatedClassName, String fieldName, String initialiser) {
+        Flavor(String displayName, String generatedClassName, String fieldName, String initialiser, boolean isDark) {
             this.displayName = displayName;
             this.generatedClassName = generatedClassName;
             this.fieldName = fieldName;
             this.initialiser = initialiser;
+            this.isDark = isDark;
         }
     }
 
@@ -86,6 +88,22 @@ public class PaletteProcessor extends AbstractProcessor {
                         .addCode("return $S;", flavor.displayName)
                         .addAnnotation(Override.class)
                         .returns(String.class)
+                        .build()
+                )
+                .addMethod(MethodSpec
+                        .methodBuilder("isLight")
+                        .addModifiers(Modifier.PUBLIC)
+                        .addCode("return $L;", !flavor.isDark)
+                        .addAnnotation(Override.class)
+                        .returns(boolean.class)
+                        .build()
+                )
+                .addMethod(MethodSpec
+                        .methodBuilder("isDark")
+                        .addModifiers(Modifier.PUBLIC)
+                        .addCode("return $L;", flavor.isDark)
+                        .addAnnotation(Override.class)
+                        .returns(boolean.class)
                         .build()
                 ))
                 .build();
