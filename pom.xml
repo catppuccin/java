@@ -11,18 +11,45 @@
   <url>http://www.example.com</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+  <scm>
+    <connection>scm:git:https://github.com/catppuccin/java.git</connection>
+    <developerConnection>scm:git:git@github.com:catppuccin/java.git</developerConnection>
+    <url>https://github.com/catppuccin/java</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>sgoudham</id>
+      <name>Goudham Suresh</name>
+      <email>sgoudham@gmail.com</email>
+      <organization>Catppuccin</organization>
+      <organizationUrl>https://github.com/catppuccin</organizationUrl>
+    </developer>
+
+    <developer>
+      <id>nullishamy</id>
+      <name>Amy Erskine</name>
+      <email>contact@amyerskine.me</email>
+      <organization>Catppuccin</organization>
+      <organizationUrl>https://github.com/catppuccin</organizationUrl>
+    </developer>
+  </developers>
+
+  <ciManagement>
+    <system>GitHub Actions</system>
+    <url>https://github.com/catppuccin/java/actions</url>
+  </ciManagement>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
 
   <dependencyManagement>
     <dependencies>
@@ -33,6 +60,17 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
       
   <build>
     <pluginManagement>
