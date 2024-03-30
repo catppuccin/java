@@ -120,7 +120,7 @@ public class PaletteProcessor extends AbstractProcessor {
     private POJO.Root loadPalette() throws IOException {
         String palettePath = processingEnv.getOptions().get("palettePath");
         Path path = Paths.get(palettePath);
-        String jsonString = Files.readString(path);
+        String jsonString = new String(Files.readAllBytes(path));
 
         Gson gson = new Gson();
         POJO.Root json = gson.fromJson(jsonString, POJO.Root.class);
