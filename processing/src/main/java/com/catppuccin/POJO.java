@@ -11,7 +11,12 @@ public class POJO {
 
         @Override
         public String toString() {
-            return "Root { latte=%s, frappe=%s, macchiato=%s, mocha=%s}".formatted(latte, frappe, macchiato, mocha);
+            return "Root{" +
+                "latte=" + latte +
+                ", frappe=" + frappe +
+                ", macchiato=" + macchiato +
+                ", mocha=" + mocha +
+                '}';
         }
     }
 
@@ -59,7 +64,12 @@ public class POJO {
 
         @Override
         public String toString() {
-            return "Flavor { name=%s, order=%d, dark=%b, colors=%s }".formatted(name, order, dark, colors);
+            return "Flavor{" +
+                "name='" + name + '\'' +
+                ", order=" + order +
+                ", dark=" + dark +
+                ", colors=" + colors +
+                '}';
         }
     }
 
@@ -121,7 +131,14 @@ public class POJO {
 
         @Override
         public String toString() {
-            return "Color { name=%s, order=%d, hex=%s, rgb=%s, hsl=%s, accent=%b }".formatted(name, order, hex, rgb, hsl, accent);
+            return "Color{" +
+                "name='" + name + '\'' +
+                ", order=" + order +
+                ", hex='" + hex + '\'' +
+                ", rgb=" + rgb +
+                ", hsl=" + hsl +
+                ", accent=" + accent +
+                '}';
         }
     }
 
@@ -156,7 +173,11 @@ public class POJO {
 
         @Override
         public String toString() {
-            return "HSL { %f %f %f }".formatted(h, s, l);
+            return "Hsl{" +
+                "h=" + h +
+                ", s=" + s +
+                ", l=" + l +
+                '}';
         }
     }
 
@@ -191,7 +212,11 @@ public class POJO {
 
         @Override
         public String toString() {
-            return "RGB { %d %d %d }".formatted(r, g, b);
+            return "RGB{" +
+                "r=" + r +
+                ", g=" + g +
+                ", b=" + b +
+                '}';
         }
     }
 }

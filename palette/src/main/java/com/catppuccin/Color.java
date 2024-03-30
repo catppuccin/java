@@ -25,7 +25,11 @@ public class Color {
 
     @Override
     public String toString() {
-        return "Color { r=%d, g=%d, b=%d }".formatted(r, g, b);
+        return "Color{" +
+            "r=" + r +
+            ", g=" + g +
+            ", b=" + b +
+            '}';
     }
 
     @Override
