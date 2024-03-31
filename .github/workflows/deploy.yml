@@ -34,33 +34,10 @@ jobs:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
         run: mvn -B -DskipTests deploy
 
-      - name: Get Name & Version
-        run: |
-          echo "VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-          echo "NAME=$(mvn help:evaluate -Dexpression=project.name -q -DforceStdout)" >> $GITHUB_ENV
-
-      - name: Archive Jar
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.NAME }}-${{ env.VERSION }}.jar
-          path: ./target/${{ env.NAME }}-${{ env.VERSION }}.jar
-
-      - name: Archive Javadoc
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.NAME }}-${{ env.VERSION }}-javadoc.jar
-          path: ./target/${{ env.NAME }}-${{ env.VERSION }}-javadoc.jar
-
-      - name: Archive Sources
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.NAME }}-${{ env.VERSION }}-sources.jar
-          path: ./target/${{ env.NAME }}-${{ env.VERSION }}-sources.jar
-
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: target/*.jar
+          artifacts: "{palette,processing}/target/*.jar"
           generateReleaseNotes: true
           makeLatest: true
           draft: true

@@ -33,11 +33,6 @@ jobs:
       - name: Test
         run: mvn test
 
-      - name: Retrieve Name & Version
-        run: |
-          echo "VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-          echo "NAME=$(mvn help:evaluate -Dexpression=project.name -q -DforceStdout)" >> $GITHUB_ENV
-
       - name: Archive Palette Artifacts
         uses: actions/upload-artifact@v4
         with:
