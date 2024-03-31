@@ -19,7 +19,7 @@
       {
         devShell = mkShell {
           buildInputs = [
-            openjdk8-bootstrap
+            openjdk11-bootstrap
           ];
         };
       }

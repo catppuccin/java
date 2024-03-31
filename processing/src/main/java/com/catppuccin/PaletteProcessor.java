@@ -25,6 +25,8 @@ import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.ParameterizedTypeName;
+import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 
 @SupportedAnnotationTypes(
@@ -36,6 +38,13 @@ public class PaletteProcessor extends AbstractProcessor {
     private static final String ROOT_PKG = "com.catppuccin";
     private static final ClassName FLAVOR_CLASS = ClassName.get(ROOT_PKG, "Flavor");
     private static final ClassName COLOR_CLASS = ClassName.get(ROOT_PKG, "Color");
+    private static final TypeName TO_LIST_RET = 
+        ParameterizedTypeName.get(
+            ClassName.get("java.util", "List"), 
+                ParameterizedTypeName.get(ClassName.get(ROOT_PKG, "Pair"), 
+                    ClassName.get("java.lang", "String"), ClassName.get(ROOT_PKG, "Color")
+                )
+            );
 
     private static enum Flavor {
         MOCHA("mocha", "Mocha", "MOCHA", "new Mocha()", true),
@@ -77,6 +86,25 @@ public class PaletteProcessor extends AbstractProcessor {
         return spec;
     }
 
+    private static MethodSpec toListImpl(POJO.Flavor flavor) {
+        MethodSpec.Builder builder = MethodSpec
+                .methodBuilder("toList")
+                .addModifiers(Modifier.PUBLIC)
+                .addAnnotation(Override.class)
+                .addStatement("List<com.catppuccin.Pair<String, com.catppuccin.Color>> out = new java.util.ArrayList<>()")
+                .returns(TO_LIST_RET);
+
+        for (Entry<String, POJO.Color> entry : flavor.getColors().entrySet()) {
+            POJO.Color color = entry.getValue();
+            POJO.RGB rgb = color.getRGB();
+            builder.addStatement("out.add(new com.catppuccin.Pair<>($S, new Color($L, $L, $L)))", entry.getKey(), rgb.getR(), rgb.getG(), rgb.getB());
+        }
+
+        builder.addStatement("return out");
+
+        return builder.build();
+    }
+
     private static TypeSpec buildStoredPalette(POJO.Flavor pflavor, Flavor flavor) {
         return attachPalette(pflavor, TypeSpec
                 .classBuilder(flavor.generatedClassName)
@@ -106,6 +134,7 @@ public class PaletteProcessor extends AbstractProcessor {
                         .returns(boolean.class)
                         .build()
                 ))
+                .addMethod(toListImpl(pflavor))
                 .build();
     }
 

@@ -23,6 +23,18 @@ public class Color {
         return this.b;
     }
 
+    public String hex() {
+        return String.format("%02x%02x%02x", this.r(), this.g(), this.b());
+    }
+
+    public int[] components() {
+        return new int[]{
+            r(),
+            g(),
+            b()
+        };
+    }
+
     @Override
     public String toString() {
         return "Color{" +

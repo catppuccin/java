@@ -1,9 +1,12 @@
 package com.catppuccin;
 
+import java.util.List;
+
 public interface Flavor {
     String name();
     boolean isDark();
     boolean isLight();
+    List<Pair<String, Color>> toList();
 
     Color rosewater();
     Color flamingo();
