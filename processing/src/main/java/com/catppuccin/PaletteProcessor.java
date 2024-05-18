@@ -92,7 +92,7 @@ public class PaletteProcessor extends AbstractProcessor {
                 .methodBuilder("toList")
                 .addModifiers(Modifier.PUBLIC)
                 .addAnnotation(Override.class)
-                .addJavadoc("A convenience method to take all the colours and return them in an"
+                .addJavadoc("A convenience method to take all the colours and return them in an "
                         + "iterable {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}"
                         + "\n"
                         + "@return {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}"

@@ -26,7 +26,7 @@ public interface Flavor {
 
 
     /**
-     * A convenience method to take all the colours and return them in aniterable {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}
+     * A convenience method to take all the colours and return them in an iterable {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}
      * @return {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}
      */
     List<Pair<String, Color>> toList();
