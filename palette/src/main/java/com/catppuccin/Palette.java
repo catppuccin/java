@@ -10,22 +10,22 @@ import java.util.List;
 public class Palette 
 {
     /**
-     * Mocha flavoured Catppuccin
+     * Mocha flavored Catppuccin
      */
     public static final Flavor MOCHA = com.catppuccin.BuiltinPalettes.MOCHA; 
 
     /**
-     * Macchiato flavoured Catppuccin
+     * Macchiato flavored Catppuccin
      */
     public static final Flavor MACCHIATO = com.catppuccin.BuiltinPalettes.MACCHIATO; 
 
     /**
-     * Frappe flavoured Catppuccin
+     * Frappe flavored Catppuccin
      */
     public static final Flavor FRAPPE = com.catppuccin.BuiltinPalettes.FRAPPE; 
 
     /**
-     * Latte flavoured Catppuccin
+     * Latte flavored Catppuccin
      */
     public static final Flavor LATTE = com.catppuccin.BuiltinPalettes.LATTE; 
 
