@@ -1,8 +1,8 @@
 package com.catppuccin;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class Oled extends BuiltinPalettes.Mocha {
     @Override
@@ -14,46 +14,46 @@ class Oled extends BuiltinPalettes.Mocha {
 public class PaletteTests {
     @Test
     public void mochaExistsAndReturnsCorrectDetails() {
-        assertEquals("mocha to have the correct name", "mocha", Palette.MOCHA.name());
+        assertEquals("mocha", Palette.MOCHA.name(), "mocha to have the correct name");
     }
 
     @Test
     public void builtinMochaExistsAndReturnsCorrectDetails() {
         BuiltinPalettes.Mocha palette = BuiltinPalettes.MOCHA;
-        assertEquals("mocha to have the correct name", "mocha", palette.name());
+        assertEquals("mocha", palette.name(), "mocha to have the correct name");
     }
 
     @Test
     public void frappeExistsAndReturnsCorrectDetails() {
-        assertEquals("frappe to have the correct name", "frappe", Palette.FRAPPE.name());
+        assertEquals("frappe", Palette.FRAPPE.name(), "frappe to have the correct name");
     }
 
     @Test
     public void builtinFrappeExistsAndReturnsCorrectDetails() {
         BuiltinPalettes.Frappe palette = BuiltinPalettes.FRAPPE;
-        assertEquals("frappe to have the correct name", "frappe", palette.name());
+        assertEquals("frappe", palette.name(), "frappe to have the correct name");
     }
 
     @Test
     public void macchiatoExistsAndReturnsCorrectDetails() {
-        assertEquals("macchiato to have the correct name", "macchiato", Palette.MACCHIATO.name());
+        assertEquals("macchiato", Palette.MACCHIATO.name(), "macchiato to have the correct name");
     }
 
     @Test
     public void builtinMacchiatoExistsAndReturnsCorrectDetails() {
         BuiltinPalettes.Macchiato palette = BuiltinPalettes.MACCHIATO;
-        assertEquals("macchiato to have the correct name", "macchiato", palette.name());
+        assertEquals("macchiato", palette.name(), "macchiato to have the correct name");
     }
 
     @Test
     public void latteExistsAndReturnsCorrectDetails() {
-        assertEquals("latte to have the correct name", "latte", Palette.LATTE.name());
+        assertEquals("latte", Palette.LATTE.name(), "latte to have the correct name");
     }
 
     @Test
     public void builtinLatteExistsAndReturnsCorrectDetails() {
         BuiltinPalettes.Latte palette = BuiltinPalettes.LATTE;
-        assertEquals("latte to have the correct name", "latte", palette.name());
+        assertEquals("latte", palette.name(), "latte to have the correct name");
     }
 
     @Test
@@ -61,23 +61,23 @@ public class PaletteTests {
         Flavor mocha = Palette.MOCHA;
         Flavor oled = new Oled();
 
-        assertEquals("oled red and mocha red to be the same", mocha.red(), oled.red());
-        assertEquals("oled base is 0, 0, 0", new Color(0, 0, 0), oled.base());
-        assertNotEquals("oled base and mocha base to not be the same", mocha.base(), oled.base());
+        assertEquals(mocha.red(), oled.red(), "oled red and mocha red to be the same");
+        assertEquals(new Color(0, 0, 0), oled.base(), "oled base is 0, 0, 0");
+        assertNotEquals(mocha.base(), oled.base(), "oled base and mocha base to not be the same");
     }
 
     @Test
     public void darkLightSet() {
-        assertEquals("mocha to be dark", true, Palette.MOCHA.isDark());
-        assertEquals("mocha to be not light", false, Palette.MOCHA.isLight());
+        assertTrue(Palette.MOCHA.isDark(), "mocha to be dark");
+        assertFalse(Palette.MOCHA.isLight(), "mocha to be not light");
 
-        assertEquals("macchiato to be dark", true, Palette.MACCHIATO.isDark());
-        assertEquals("macchiato to be not light", false, Palette.MACCHIATO.isLight());
+        assertTrue(Palette.MACCHIATO.isDark(), "macchiato to be dark");
+        assertFalse(Palette.MACCHIATO.isLight(), "macchiato to be not light");
 
-        assertEquals("frappe to be dark", true, Palette.FRAPPE.isDark());
-        assertEquals("frappe to be not light", false, Palette.FRAPPE.isLight());
+        assertTrue(Palette.FRAPPE.isDark(), "frappe to be dark");
+        assertFalse(Palette.FRAPPE.isLight(), "frappe to be not light");
 
-        assertEquals("latte to be light", true, Palette.LATTE.isLight());
-        assertEquals("latte to be not dark", false, Palette.LATTE.isDark());
+        assertTrue(Palette.LATTE.isLight(), "latte to be light");
+        assertFalse(Palette.LATTE.isDark(), "latte to be not dark");
     }
 }
