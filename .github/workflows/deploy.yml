@@ -37,7 +37,7 @@ jobs:
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "{palette,processing}/target/*.jar"
+          artifacts: "palette/target/*.jar,processing/target/*.jar"
           generateReleaseNotes: true
           makeLatest: true
           draft: true
