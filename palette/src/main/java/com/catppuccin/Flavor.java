@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface Flavor {
     String name();
+    String emoji();
     boolean isDark();
     boolean isLight();
     List<Pair<String, Color>> toList();

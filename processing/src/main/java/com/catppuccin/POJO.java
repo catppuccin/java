@@ -23,11 +23,16 @@ public class POJO {
     public class Flavor {
         private String name;
         private long order;
+        private String emoji;
         private boolean dark;
         private Map<String, Color> colors;
 
         public String getName() {
             return name;
+        }
+
+        public String getEmoji() {
+            return emoji;
         }
 
         public void setName(String value) {
@@ -66,6 +71,7 @@ public class POJO {
         public String toString() {
             return "Flavor{" +
                 "name='" + name + '\'' +
+                "emoji='" + emoji + '\'' +
                 ", order=" + order +
                 ", dark=" + dark +
                 ", colors=" + colors +

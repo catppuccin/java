@@ -30,7 +30,7 @@ import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 
 @SupportedAnnotationTypes(
-    {"com.catppuccin.GeneratedPalette"}
+        {"com.catppuccin.GeneratedPalette"}
 )
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class PaletteProcessor extends AbstractProcessor {
@@ -38,13 +38,13 @@ public class PaletteProcessor extends AbstractProcessor {
     private static final String ROOT_PKG = "com.catppuccin";
     private static final ClassName FLAVOR_CLASS = ClassName.get(ROOT_PKG, "Flavor");
     private static final ClassName COLOR_CLASS = ClassName.get(ROOT_PKG, "Color");
-    private static final TypeName TO_LIST_RET =
-        ParameterizedTypeName.get(
-            ClassName.get("java.util", "List"),
-            ParameterizedTypeName.get(ClassName.get(ROOT_PKG, "Pair"),
-                ClassName.get("java.lang", "String"), ClassName.get(ROOT_PKG, "Color")
-            )
-        );
+    private static final TypeName TO_LIST_RET
+            = ParameterizedTypeName.get(
+                    ClassName.get("java.util", "List"),
+                    ParameterizedTypeName.get(ClassName.get(ROOT_PKG, "Pair"),
+                            ClassName.get("java.lang", "String"), ClassName.get(ROOT_PKG, "Color")
+                    )
+            );
 
     private enum Flavor {
         MOCHA("mocha", "Mocha", "MOCHA", "new Mocha()", true),
@@ -73,12 +73,13 @@ public class PaletteProcessor extends AbstractProcessor {
             POJO.RGB rgb = color.getRGB();
 
             MethodSpec method = MethodSpec
-                .methodBuilder(entry.getKey())
-                .addModifiers(Modifier.PUBLIC)
-                .addCode("return new Color($L, $L, $L);", rgb.getR(), rgb.getG(), rgb.getB())
-                .addAnnotation(Override.class)
-                .returns(COLOR_CLASS)
-                .build();
+                    .methodBuilder(entry.getKey())
+                    .addModifiers(Modifier.PUBLIC)
+                    .addCode("return new Color($L, $L, $L);", rgb.getR(), rgb.getG(), rgb.getB())
+                    .addJavadoc("@return {@link com.catppuccin.Color}")
+                    .addAnnotation(Override.class)
+                    .returns(COLOR_CLASS)
+                    .build();
 
             spec.addMethod(method);
         }
@@ -88,11 +89,16 @@ public class PaletteProcessor extends AbstractProcessor {
 
     private static MethodSpec toListImpl(POJO.Flavor flavor) {
         MethodSpec.Builder builder = MethodSpec
-            .methodBuilder("toList")
-            .addModifiers(Modifier.PUBLIC)
-            .addAnnotation(Override.class)
-            .addStatement("List<com.catppuccin.Pair<String, com.catppuccin.Color>> out = new java.util.ArrayList<>()")
-            .returns(TO_LIST_RET);
+                .methodBuilder("toList")
+                .addModifiers(Modifier.PUBLIC)
+                .addAnnotation(Override.class)
+                .addJavadoc("A convenience method to take all the colours and return them in an"
+                        + "iterable {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}"
+                        + "\n"
+                        + "@return {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}"
+                )
+                .addStatement("List<com.catppuccin.Pair<String, com.catppuccin.Color>> out = new java.util.ArrayList<>()")
+                .returns(TO_LIST_RET);
 
         for (Entry<String, POJO.Color> entry : flavor.getColors().entrySet()) {
             POJO.Color color = entry.getValue();
@@ -107,43 +113,56 @@ public class PaletteProcessor extends AbstractProcessor {
 
     private static TypeSpec buildStoredPalette(POJO.Flavor pflavor, Flavor flavor) {
         return attachPalette(pflavor, TypeSpec
-            .classBuilder(flavor.generatedClassName)
-            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-            .addSuperinterface(FLAVOR_CLASS)
-            .addMethod(MethodSpec
-                .methodBuilder("name")
-                .addModifiers(Modifier.PUBLIC)
-                .addCode("return $S;", flavor.displayName)
-                .addAnnotation(Override.class)
-                .returns(String.class)
-                .build()
-            )
-            .addMethod(MethodSpec
-                .methodBuilder("isLight")
-                .addModifiers(Modifier.PUBLIC)
-                .addCode("return $L;", !flavor.isDark)
-                .addAnnotation(Override.class)
-                .returns(boolean.class)
-                .build()
-            )
-            .addMethod(MethodSpec
-                .methodBuilder("isDark")
-                .addModifiers(Modifier.PUBLIC)
-                .addCode("return $L;", flavor.isDark)
-                .addAnnotation(Override.class)
-                .returns(boolean.class)
-                .build()
-            ))
-            .addMethod(toListImpl(pflavor))
-            .build();
+                .classBuilder(flavor.generatedClassName)
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                .addSuperinterface(FLAVOR_CLASS)
+                .addMethod(MethodSpec
+                        .methodBuilder("name")
+                        .addModifiers(Modifier.PUBLIC)
+                        .addCode("return $S;", flavor.displayName)
+                        .addJavadoc("@return the name of the flavour (latte, frappe, macchiato or mocha)")
+                        .addAnnotation(Override.class)
+                        .returns(String.class)
+                        .build()
+                )
+                .addMethod(MethodSpec
+                        .methodBuilder("emoji")
+                        .addModifiers(Modifier.PUBLIC)
+                        .addCode("return $S;", pflavor.getEmoji())
+                        .addJavadoc("@return the emoji that represents the flavour")
+                        .addAnnotation(Override.class)
+                        .returns(String.class)
+                        .build()
+                )
+                .addMethod(MethodSpec
+                        .methodBuilder("isLight")
+                        .addModifiers(Modifier.PUBLIC)
+                        .addCode("return $L;", !flavor.isDark)
+                        .addJavadoc("@return whether this flavour is a designed for light mode")
+                        .addAnnotation(Override.class)
+                        .returns(boolean.class)
+                        .build()
+                )
+                .addMethod(MethodSpec
+                        .methodBuilder("isDark")
+                        .addModifiers(Modifier.PUBLIC)
+                        .addCode("return $L;", flavor.isDark)
+                        .addJavadoc("@return whether this flavour is a designed for dark mode")
+                        .addAnnotation(Override.class)
+                        .returns(boolean.class)
+                        .build()
+                ))
+                .addJavadoc("An individual flavor for the Catppuccin v0.2.0 palette, generated from the palette.json.")
+                .addMethod(toListImpl(pflavor))
+                .build();
     }
 
     private static FieldSpec buildStoredField(Flavor flavor) {
         ClassName className = ClassName.get("", flavor.generatedClassName);
         return FieldSpec
-            .builder(className, flavor.fieldName, Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
-            .initializer(flavor.initialiser)
-            .build();
+                .builder(className, flavor.fieldName, Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
+                .initializer(flavor.initialiser)
+                .build();
     }
 
     private POJO.Root loadPalette() throws IOException {
@@ -168,16 +187,17 @@ public class PaletteProcessor extends AbstractProcessor {
 
         ClassName holderClassName = ClassName.bestGuess(paletteAnnotation.target());
         TypeSpec holderClass = TypeSpec.classBuilder(holderClassName.simpleName())
-            .addModifiers(Modifier.PUBLIC)
-            .addType(buildStoredPalette(json.mocha, Flavor.MOCHA))
-            .addField(buildStoredField(Flavor.MOCHA))
-            .addType(buildStoredPalette(json.macchiato, Flavor.MACCHIATO))
-            .addField(buildStoredField(Flavor.MACCHIATO))
-            .addType(buildStoredPalette(json.frappe, Flavor.FRAPPE))
-            .addField(buildStoredField(Flavor.FRAPPE))
-            .addType(buildStoredPalette(json.latte, Flavor.LATTE))
-            .addField(buildStoredField(Flavor.LATTE))
-            .build();
+                .addModifiers(Modifier.PUBLIC)
+                .addType(buildStoredPalette(json.mocha, Flavor.MOCHA))
+                .addField(buildStoredField(Flavor.MOCHA))
+                .addType(buildStoredPalette(json.macchiato, Flavor.MACCHIATO))
+                .addField(buildStoredField(Flavor.MACCHIATO))
+                .addType(buildStoredPalette(json.frappe, Flavor.FRAPPE))
+                .addField(buildStoredField(Flavor.FRAPPE))
+                .addType(buildStoredPalette(json.latte, Flavor.LATTE))
+                .addField(buildStoredField(Flavor.LATTE))
+                .addJavadoc("All the flavours, as specified by the palette.json, and generated by the processing lib")
+                .build();
 
         JavaFile javaFile = JavaFile.builder(ROOT_PKG, holderClass).build();
         JavaFileObject sourceFile = processingEnv.getFiler().createSourceFile(paletteAnnotation.target());
