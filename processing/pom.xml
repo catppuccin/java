@@ -5,17 +5,17 @@
   <parent>
     <artifactId>catppuccin-java</artifactId>
     <groupId>com.catppuccin</groupId>
-    <version>1.0.0</version>
+    <version>${revision}</version>
   </parent>
 
   <packaging>jar</packaging>
   <artifactId>catppuccin-processing</artifactId>
   <version>1.0.0</version>
   <name>catppuccin-processing</name>
+  <description>Soothing pastel code generator for Catppuccin</description>
   <url>https://github.com/catppuccin/java</url>
 
   <properties>
-    <maven.deploy.skip>false</maven.deploy.skip>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
