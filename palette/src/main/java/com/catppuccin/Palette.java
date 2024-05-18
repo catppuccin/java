@@ -29,6 +29,9 @@ public class Palette
      */
     public static final Flavor LATTE = com.catppuccin.BuiltinPalettes.LATTE; 
 
+    /**
+     * @return all the flavors, in one list, for convenience
+     */
     public List<Flavor> toList() {
         List<Flavor> out = new ArrayList<>();
 
