@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>catppuccin-java</artifactId>
+    <groupId>com.catppuccin</groupId>
+    <version>1.0.0</version>
+  </parent>
+
+  <packaging>jar</packaging>
+  <artifactId>catppuccin-palette</artifactId>
+  <version>2.0.0</version>
+  <name>catppuccin-palette</name>
+  <description>Soothing pastel library for Catppuccin</description>
+  <url>https://github.com/catppuccin/java</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.catppuccin</groupId>
+      <artifactId>catppuccin-processing</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.10.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+          <configuration>
+            <annotationProcessorPaths>
+              <annotationProcessorPath>
+                <groupId>com.catppuccin</groupId>
+                <artifactId>catppuccin-processing</artifactId>
+                <version>1.0.0</version>
+              </annotationProcessorPath>
+            </annotationProcessorPaths>
+            <annotationProcessors>
+              <annotationProcessor>com.catppuccin.PaletteProcessor</annotationProcessor>
+            </annotationProcessors>
+            <compilerArgs>
+              <compilerArg>-ApalettePath=${project.basedir}/palette.json</compilerArg>
+            </compilerArgs>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

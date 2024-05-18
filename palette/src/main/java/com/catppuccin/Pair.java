@@ -11,12 +11,12 @@ public final class Pair<T, U> {
         this.value = value;
     }
 
-    public T getKey() {
-        return key;
+    public T key() {
+        return this.key;
     }
 
-    public U getValue() {
-        return value;
+    public U value() {
+        return this.value;
     }
 
     @Override

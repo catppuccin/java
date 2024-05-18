@@ -53,24 +53,24 @@ package com.catppuccin;
 
 public class Main {
   public static void main(String[] args) {
-    String mocha = Palette.MOCHA.getName(); // mocha
-    String mochaBaseHex = Palette.MOCHA.getBase().getHex(); // 1e1e2e
-    int[] mochaBaseRGB = Palette.MOCHA.getBase().getRGBComponents(); // [30, 30, 46]
+    String mocha = Palette.MOCHA.name(); // mocha
+    String mochaBaseHex = Palette.MOCHA.base().hex(); // 1e1e2e
+    int[] mochaBaseRGB = Palette.MOCHA.base().components(); // [30, 30, 46]
 
     // loop through just frappé
     for (Pair<String, Color> colourPair : Palette.FRAPPE.toList()) {
-      String name = colourPair.getKey();
-      Color colour = colourPair.getValue();
-      System.out.println(name + ": " + colour.getHex());
+      String name = colourPair.key();
+      Color colour = colourPair.value();
+      System.out.println(name + ": " + colour.hex());
     }
 
     // loop through every colour
     for (Flavour flavour : Palette.toList()) {
-      System.out.println("Flavour: " + flavour.getName());
+      System.out.println("Flavour: " + flavour.name());
       for (Pair<String, Color> colourPair : flavour.toList()) {
-        String name = colourPair.getKey();
-        Color colour = colourPair.getValue();
-        System.out.println(name + ": " + colour.getHex());
+        String name = colourPair.key();
+        Color colour = colourPair.value();
+        System.out.println(name + ": " + colour.hex());
       }
     }
   }
@@ -82,35 +82,10 @@ public class Main {
 If you are looking to contribute, please read through our
 [CONTRIBUTING.md](https://github.com/catppuccin/.github/blob/main/CONTRIBUTING.md) first!
 
-### Development
-
-This project uses the build tool [Maven](https://maven.apache.org/) from the java ecosystem. It is *highly* recommended
-to develop using [Intellij IDEA](https://www.jetbrains.com/idea/) as it will allow you to take advantage of its
-integration with maven tooling.
-
-The project can be built using the command:
-
-```shell
-./mvnw clean package
-```
-
-and running tests is as simple as:
-
-```shell
-./mvnw test
-```
-
-A great 5-minute introduction to Maven can be
-found [here](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html).
-
-### CI / CD
-
-This project has a GitHub actions workflow to automatically build binaries and deploy to maven central. The workflows
-are stored at [.github/workflows](.github/workflows)
-
 ## 💝 Thanks to
 
 - [Hamothy](https://github.com/sgoudham)
+- [nullishamy](https://github.com/nullishamy)
 
 &nbsp;
 
