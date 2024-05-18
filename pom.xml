@@ -50,6 +50,7 @@
     </license>
   </licenses>
 
+  <!-- We need to add it at the root for the palette module to properly discover it -->
   <dependencyManagement>
     <dependencies>
       <dependency>
