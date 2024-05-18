@@ -5,14 +5,13 @@
 
   <groupId>com.catppuccin</groupId>
   <artifactId>catppuccin-java</artifactId>
-  <version>${revision}</version>
+  <version>2.0.1</version>
   <packaging>pom</packaging>
   <name>catppuccin-java</name>
   <description>Soothing pastel library for Catppuccin</description>
   <url>https://github.com/catppuccin/java</url>
 
   <properties>
-    <revision>2.0.0</revision>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
