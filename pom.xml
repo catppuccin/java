@@ -10,6 +10,7 @@
   <name>catppuccin-java</name>
 
   <properties>
+    <maven.deploy.skip>true</maven.deploy.skip>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -112,7 +113,7 @@
         <configuration>
           <serverId>ossrh</serverId>
           <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+          <autoReleaseAfterClose>false</autoReleaseAfterClose>
         </configuration>
       </plugin>
       <plugin>
