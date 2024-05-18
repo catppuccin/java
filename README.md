@@ -85,6 +85,7 @@ If you are looking to contribute, please read through our
 ## 💝 Thanks to
 
 - [Hamothy](https://github.com/sgoudham)
+- [nullishamy](https://github.com/nullishamy)
 
 &nbsp;
 
