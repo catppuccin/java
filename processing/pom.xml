@@ -12,7 +12,7 @@
   <artifactId>catppuccin-processing</artifactId>
   <version>1.0.0</version>
   <name>catppuccin-processing</name>
-  <url>https://catppuccin.com</url>
+  <url>https://github.com/catppuccin/java</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
