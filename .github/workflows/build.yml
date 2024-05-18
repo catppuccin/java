@@ -1,17 +1,18 @@
 name: Build
 
 on:
+  workflow_dispatch:
   push:
-    branches: '**'
+    branches: 'main'
     paths:
-      - 'src/**'
+      - 'palette/**'
+      - 'processing/**'
       - 'pom.xml'
   pull_request:
-    branches: '**'
     paths:
-      - 'src/**'
+      - 'palette/**'
+      - 'processing/**'
       - 'pom.xml'
-  workflow_dispatch:
 
 jobs:
   build:
