@@ -24,10 +24,13 @@ public interface Flavor {
      */
     boolean isDark();
 
-
     /**
-     * A convenience method to take all the colours and return them in an iterable {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}
-     * @return {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}
+     * A convenience method to take all the colours and return them in an
+     * iterable
+     * {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}
+     *
+     * @return
+     * {@link java.util.List}{@code <}{@link com.catppuccin.Pair}{@code <}{@link String}, {@link com.catppuccin.Color}{@code >>}
      */
     List<Pair<String, Color>> toList();
 
@@ -90,81 +93,91 @@ public interface Flavor {
      * @return {@link com.catppuccin.Color}
      */
     /**
-
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color sapphire();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color blue();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color lavender();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color text();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color subtext1();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color subtext0();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color overlay2();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color overlay1();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color overlay0();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color surface2();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color surface1();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color surface0();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color base();
-    /**
 
+    /**
+     *
      * @return {@link com.catppuccin.Color}
      */
     Color mantle();
+
     /**
      * @return {@link com.catppuccin.Color}
      */
     Color crust();
- 
-   /**
-     * @return {@link com.catppuccin.Color}
-     */
 }
