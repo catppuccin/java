@@ -8,11 +8,13 @@ on:
       - 'palette/**'
       - 'processing/**'
       - 'pom.xml'
+      - '.mvn/**'
   pull_request:
     paths:
       - 'palette/**'
       - 'processing/**'
       - 'pom.xml'
+      - '.mvn/**'
 
 jobs:
   build:
