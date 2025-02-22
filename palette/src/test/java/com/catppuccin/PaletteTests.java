@@ -14,13 +14,13 @@ class Oled extends BuiltinPalettes.Mocha {
 public class PaletteTests {
     @Test
     public void mochaExistsAndReturnsCorrectDetails() {
-        assertEquals("mocha", Palette.MOCHA.name(), "mocha to have the correct name");
-    }
-
-    @Test
-    public void builtinMochaExistsAndReturnsCorrectDetails() {
-        BuiltinPalettes.Mocha palette = BuiltinPalettes.MOCHA;
-        assertEquals("mocha", palette.name(), "mocha to have the correct name");
+        Flavor mocha = Palette.MOCHA;
+        assertEquals("mocha", mocha.name(), "mocha to have the correct name");
+        assertEquals(mocha.base().hex(), "1e1e2e");
+        assertEquals(mocha.base().r(), 30);
+        assertEquals(mocha.base().g(), 30);
+        assertEquals(mocha.base().b(), 46);
+        assertArrayEquals(mocha.base().components(), new int[]{30, 30, 46});
     }
 
     @Test
@@ -29,31 +29,13 @@ public class PaletteTests {
     }
 
     @Test
-    public void builtinFrappeExistsAndReturnsCorrectDetails() {
-        BuiltinPalettes.Frappe palette = BuiltinPalettes.FRAPPE;
-        assertEquals("frappe", palette.name(), "frappe to have the correct name");
-    }
-
-    @Test
     public void macchiatoExistsAndReturnsCorrectDetails() {
         assertEquals("macchiato", Palette.MACCHIATO.name(), "macchiato to have the correct name");
     }
 
     @Test
-    public void builtinMacchiatoExistsAndReturnsCorrectDetails() {
-        BuiltinPalettes.Macchiato palette = BuiltinPalettes.MACCHIATO;
-        assertEquals("macchiato", palette.name(), "macchiato to have the correct name");
-    }
-
-    @Test
     public void latteExistsAndReturnsCorrectDetails() {
         assertEquals("latte", Palette.LATTE.name(), "latte to have the correct name");
-    }
-
-    @Test
-    public void builtinLatteExistsAndReturnsCorrectDetails() {
-        BuiltinPalettes.Latte palette = BuiltinPalettes.LATTE;
-        assertEquals("latte", palette.name(), "latte to have the correct name");
     }
 
     @Test

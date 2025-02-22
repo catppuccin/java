@@ -14,7 +14,7 @@ public class Color {
      * @param b the green value
      * @param g the blue value
      */
-    public Color(int r, int b, int g) {
+    public Color(int r, int g, int b) {
         this.r = r;
         this.g = g;
         this.b = b;
