@@ -14,7 +14,13 @@ class Oled extends BuiltinPalettes.Mocha {
 public class PaletteTests {
     @Test
     public void mochaExistsAndReturnsCorrectDetails() {
-        assertEquals("mocha", Palette.MOCHA.name(), "mocha to have the correct name");
+        Flavor mocha = Palette.MOCHA;
+        assertEquals("mocha", mocha.name(), "mocha to have the correct name");
+        assertEquals(mocha.base().hex(), "1e1e2e");
+        assertEquals(mocha.base().r(), 30);
+        assertEquals(mocha.base().g(), 30);
+        assertEquals(mocha.base().b(), 46);
+        assertArrayEquals(mocha.base().components(), new int[]{30, 30, 46});
     }
 
     @Test
