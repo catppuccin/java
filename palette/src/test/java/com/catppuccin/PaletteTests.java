@@ -24,20 +24,8 @@ public class PaletteTests {
     }
 
     @Test
-    public void builtinMochaExistsAndReturnsCorrectDetails() {
-        BuiltinPalettes.Mocha palette = BuiltinPalettes.MOCHA;
-        assertEquals("mocha", palette.name(), "mocha to have the correct name");
-    }
-
-    @Test
     public void frappeExistsAndReturnsCorrectDetails() {
         assertEquals("frappe", Palette.FRAPPE.name(), "frappe to have the correct name");
-    }
-
-    @Test
-    public void builtinFrappeExistsAndReturnsCorrectDetails() {
-        BuiltinPalettes.Frappe palette = BuiltinPalettes.FRAPPE;
-        assertEquals("frappe", palette.name(), "frappe to have the correct name");
     }
 
     @Test
@@ -46,20 +34,8 @@ public class PaletteTests {
     }
 
     @Test
-    public void builtinMacchiatoExistsAndReturnsCorrectDetails() {
-        BuiltinPalettes.Macchiato palette = BuiltinPalettes.MACCHIATO;
-        assertEquals("macchiato", palette.name(), "macchiato to have the correct name");
-    }
-
-    @Test
     public void latteExistsAndReturnsCorrectDetails() {
         assertEquals("latte", Palette.LATTE.name(), "latte to have the correct name");
-    }
-
-    @Test
-    public void builtinLatteExistsAndReturnsCorrectDetails() {
-        BuiltinPalettes.Latte palette = BuiltinPalettes.LATTE;
-        assertEquals("latte", palette.name(), "latte to have the correct name");
     }
 
     @Test
