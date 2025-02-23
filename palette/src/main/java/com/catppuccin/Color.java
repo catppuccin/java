@@ -11,8 +11,8 @@ public class Color {
     /**
      * Generate a Color based on the provided RGB values
      * @param r the red value
-     * @param b the green value
-     * @param g the blue value
+     * @param g the green value
+     * @param b the blue value
      */
     public Color(int r, int g, int b) {
         this.r = r;
