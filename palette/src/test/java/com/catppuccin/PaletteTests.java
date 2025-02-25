@@ -1,6 +1,11 @@
 package com.catppuccin;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,30 +17,25 @@ class Oled extends BuiltinPalettes.Mocha {
 }
 
 public class PaletteTests {
-    @Test
-    public void mochaExistsAndReturnsCorrectDetails() {
-        Flavor mocha = Palette.MOCHA;
-        assertEquals("mocha", mocha.name(), "mocha to have the correct name");
-        assertEquals(mocha.base().hex(), "1e1e2e");
-        assertEquals(mocha.base().r(), 30);
-        assertEquals(mocha.base().g(), 30);
-        assertEquals(mocha.base().b(), 46);
-        assertArrayEquals(mocha.base().components(), new int[]{30, 30, 46});
+
+    private static Stream<Arguments> provideFlavors() {
+        return Stream.of(
+            Arguments.of(Palette.MOCHA, "mocha", "1e1e2e", 30, 30, 46),
+            Arguments.of(Palette.FRAPPE, "frappe", "303446", 48, 52, 70),
+            Arguments.of(Palette.MACCHIATO, "macchiato", "24273a", 36, 39, 58),
+            Arguments.of(Palette.LATTE, "latte", "eff1f5", 239, 241, 245)
+        );
     }
 
-    @Test
-    public void frappeExistsAndReturnsCorrectDetails() {
-        assertEquals("frappe", Palette.FRAPPE.name(), "frappe to have the correct name");
-    }
-
-    @Test
-    public void macchiatoExistsAndReturnsCorrectDetails() {
-        assertEquals("macchiato", Palette.MACCHIATO.name(), "macchiato to have the correct name");
-    }
-
-    @Test
-    public void latteExistsAndReturnsCorrectDetails() {
-        assertEquals("latte", Palette.LATTE.name(), "latte to have the correct name");
+    @ParameterizedTest
+    @MethodSource("provideFlavors")
+    public void flavorExistsAndReturnsCorrectDetails(Flavor flavor, String name, String hex, int r, int g, int b) {
+        assertEquals(name, flavor.name(), name + " to have the correct name");
+        assertEquals(hex, flavor.base().hex());
+        assertEquals(r, flavor.base().r());
+        assertEquals(g, flavor.base().g());
+        assertEquals(b, flavor.base().b());
+        assertArrayEquals(new int[]{r, g, b}, flavor.base().components());
     }
 
     @Test
@@ -48,18 +48,19 @@ public class PaletteTests {
         assertNotEquals(mocha.base(), oled.base(), "oled base and mocha base to not be the same");
     }
 
-    @Test
-    public void darkLightSet() {
-        assertTrue(Palette.MOCHA.isDark(), "mocha to be dark");
-        assertFalse(Palette.MOCHA.isLight(), "mocha to be not light");
+    @ParameterizedTest
+    @MethodSource("provideDarkLightFlavors")
+    public void darkLightSet(Flavor flavor, boolean isDark, boolean isLight) {
+        assertEquals(isDark, flavor.isDark(), flavor.name() + " to be dark");
+        assertEquals(isLight, flavor.isLight(), flavor.name() + " to be light");
+    }
 
-        assertTrue(Palette.MACCHIATO.isDark(), "macchiato to be dark");
-        assertFalse(Palette.MACCHIATO.isLight(), "macchiato to be not light");
-
-        assertTrue(Palette.FRAPPE.isDark(), "frappe to be dark");
-        assertFalse(Palette.FRAPPE.isLight(), "frappe to be not light");
-
-        assertTrue(Palette.LATTE.isLight(), "latte to be light");
-        assertFalse(Palette.LATTE.isDark(), "latte to be not dark");
+    private static Stream<Arguments> provideDarkLightFlavors() {
+        return Stream.of(
+            Arguments.of(Palette.MOCHA, true, false),
+            Arguments.of(Palette.MACCHIATO, true, false),
+            Arguments.of(Palette.FRAPPE, true, false),
+            Arguments.of(Palette.LATTE, false, true)
+        );
     }
 }
